@@ -1,5 +1,7 @@
 # Ignore all files with a .min.js extension
 *.min.js
+*.min.scss
+*.bundle.min.scss
 
 # Ignore the "dist" directory
 dist/

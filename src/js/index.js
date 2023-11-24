@@ -1,34 +1,6 @@
 // 載入模組
-import '@css/index.scss'
 import '@js/_common.js'
 import { selectElement } from '@js/_common.js'
-
-// Swiper
-import Swiper from '@js/_swiper-bundle.min.js'
-
-// Swiper
-const swiper = new Swiper('.swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        700: {
-            slidesPerView: 2,
-        },
-        1200: {
-            slidesPerView: 3,
-        },
-    },
-})
-
-console.log(swiper)
 
 // 圖片
 // 推薦文章
@@ -92,3 +64,40 @@ selectElement('#technologyTag').src = technologyTag
 selectElement('#healthTag').src = healthTag
 selectElement('#natureTag').src = natureTag
 selectElement('#fitnessTag').src = fitnessTag
+
+// Swiper
+import Swiper from '@js/_swiper-bundle.min.js'
+import '@css/_swiper-bundle.min.scss'
+
+function initSwiper() {
+    return new Swiper('.swiper', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        breakpoints: {
+            700: {
+                slidesPerView: 2,
+            },
+            1200: {
+                slidesPerView: 3,
+            },
+        },
+    })
+}
+
+initSwiper()
+
+// 自定義樣式
+import '@css/index.scss'

@@ -294,13 +294,13 @@ body.lightTheme {
     display: flex;
     align-items: center;
     gap: var(--gap);
-    font-size: var(--font-size-xsm);
+    font-size: var(--font-size-sm);
 }
 
 .headline {
     background-color: #000;
     color: var(--light-color);
-    font-size: 1rem;
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
@@ -459,7 +459,7 @@ body.lightTheme {
     color: var(--light-color-alt);
 }
 
-/* 快速閱讀 Quick read */
+/* 快速閱讀-Swiper Quick read - Swiper */
 .sectionTitle {
     position: relative;
     font-size: var(--font-size-md);
@@ -480,19 +480,8 @@ body.lightTheme {
     height: 40rem;
 }
 
-/* 快速閱讀-Swiper Quick read - Swiper */
 .swiper-wrapper {
     height: auto;
-}
-.swiper-controls {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: var(--secondary-background-color);
-}
-
-.swiper-controls::after {
-    font-size: 1.6rem;
-    color: var(--light-color);
 }
 
 .swiper-pagination {
@@ -503,6 +492,17 @@ body.lightTheme {
     background-color: var(--light-color);
 }
 
+.swiperControls {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--secondary-background-color);
+    position: absolute;
+}
+
+.swiperControls::after {
+    font-size: 1.6rem;
+    color: var(--light-color);
+}
 /* 較舊文章 Older posts */
 .olderPostsGridWrapper {
     gap: var(--gap);

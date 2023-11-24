@@ -1,3 +1,13 @@
+// -Favicon
+import faviconImg from '@img/favicon.png'
+const favicon =
+    document.querySelector('link[rel="icon"]') || document.createElement('link')
+favicon.type = 'image/x-icon'
+favicon.rel = 'icon'
+favicon.href = faviconImg
+// 將新的 Favicon 插入到 head 元素中
+document.head.appendChild(favicon)
+
 // -共同部分
 // 獲取元素 Grab elements
 // `selectElement`函數提供了一個簡單且可重複使用的方法，可以在整個應用程式中輕鬆地選取元素。
