@@ -1,0 +1,42 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base/legacy",
+        "plugin:css-modules/recommended",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier",
+        "css-modules"
+    ],
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module"
+    },
+    "rules": {
+        //要把套件規則加入rules這樣build的時候才會檢查
+        //預設選項
+        "no-console": "off",
+        //prettier
+        "prettier/prettier": "error",
+        //css-modules
+        "css-modules/no-unused-class": [
+            "error",
+            {
+                "camelCase": true
+            }
+        ],
+        "css-modules/no-undef-class": [
+            "error",
+            {
+                "camelCase": true
+            }
+        ]
+    },
+    "root": true
+}

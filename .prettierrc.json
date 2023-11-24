@@ -1,0 +1,15 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 4,
+  "overrides": [
+    {
+      "files": ["*.ejs"],
+      "options": {
+        "parser": "html",
+        "plugins": ["prettier-plugin-ejs"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+/* 導入字體 Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* 自定義屬性 Custom properties */
+:root {
+    // 顏色
+    --light-color: #fff;
+    --light-color-alt: #afb6cd;
+    --primary-background-color: #131417;
+    --secondary-background-color: #252830;
+    --hover-light-color: var(--light-color);
+    --hover-dark-color: var(--primary-background-color);
+    --gradient-color: linear-gradient(
+        115deg,
+        #4fcf70,
+        #fad648,
+        #a767e5,
+        #12bcfe,
+        #44ce7b
+    );
+    --transparent-light-color: rgba(255, 255, 255, 0.05);
+    --transparent-dark-color: rgba(0, 0, 0, 0.75);
+    // 字體
+    --font-family: 'Poppins', sans-serif;
+    // 字體大小
+    --font-size-xsm: 1.2rem;
+    --font-size-sm: 1.6rem;
+    --font-size-md: 2.4rem;
+    --font-size-lg: 3rem;
+    --font-size-xl: 4rem;
+    // 空間
+    --gap: 2rem;
+    --margin-sm: 2rem;
+    --margin-md: 3rem;
+    --item-min-height-sm: 20rem;
+    --item-min-height-md: 30rem;
+}
+/* 基礎樣式 Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--light-color-alt);
+    background-color: var(--primary-background-color);
+    letter-spacing: 1px;
+    transition:
+        background-color 0.25s,
+        color 0.25s;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+input,
+button {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+i {
+    font-size: var(--font-size-md);
+}
+/* 主題顏色更改 Theme color change */
+body.lightTheme {
+    --light-color: #3d3d3d;
+    --light-color-alt: rgba(0, 0, 0, 0.6);
+    --primary-background-color: #fff;
+    --secondary-background-color: #f1f1f1;
+    --hover-light-color: #fff;
+    --transparent-dark-color: var(--secondary-background-color);
+    --transparent-light-color: rgba(0, 0, 0, 0.1);
+}
+/* 可重複使用類別 Reusable classes */
+.container {
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+.placeItemsCenter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.section:not(.featuredArticles) {
+    padding-block: 5rem;
+}
+
+.dGrid {
+    display: grid;
+}
+
+.screenSmHidden {
+    display: none;
+}
+
+/* 頂部 Header */
+.header {
+    background-color: var(--secondary-background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+}
+
+.logo {
+    font-size: var(--font-size-md);
+    color: var(--light-color);
+}
+
+.menu {
+    position: absolute;
+    top: 8.5rem;
+    right: 1.5rem;
+    width: 23rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-background-color);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.25s ease-in;
+}
+.list {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.menu > .list {
+    flex-direction: column;
+}
+
+.listLink.current {
+    color: var(--light-color);
+}
+
+.closeMenuIcon {
+    display: none;
+}
+
+.btn {
+    cursor: pointer;
+}
+.listLink:hover,
+.btn:hover,
+.btn:hover span {
+    color: var(--light-color);
+}
+
+.moon-icon {
+    display: none;
+}
+
+.lightTheme .sun-icon {
+    display: none;
+}
+
+.lightTheme .moon-icon {
+    display: block;
+}
+/* 頂部JS樣式 Header JavaScript Styles */
+.header.activated {
+    box-shadow: 0 1px 0.5rem var(--transparent-light-color);
+}
+
+.menu.activated {
+    box-shadow: 1px 1px 1rem var(--transparent-light-color);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menuToggleIcon.activated .openMenuIcon {
+    display: none;
+}
+
+.menuToggleIcon.activated .closeMenuIcon {
+    display: block;
+}
+
+/* 搜尋 Search */
+.searchFormContainer {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    background-color: var(--primary-background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s;
+}
+
+.formContainerInner {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.formInput,
+.formBtn {
+    display: inline-block;
+    outline: none;
+    border: 2px solid var(--secondary-background-color);
+    padding: 1.5rem;
+    color: var(--light-color-alt);
+}
+
+.formInput {
+    border-right: none;
+    width: 100%;
+    background-color: var(--primary-background-color);
+}
+
+.formBtn {
+    margin-left: -0.5rem;
+    border-left: none;
+    background-color: var(--secondary-background-color);
+    text-transform: uppercase;
+    width: 8rem;
+}
+
+.formNote {
+    font-size: var(--font-size-xsm);
+    align-self: flex-end;
+}
+
+.formCloseBtn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: 2px solid var(--secondary-background-color);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+}
+
+/* 表單JS樣式 Form JavaScript styles */
+.searchFormContainer.activated {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 精選文章 Featured articles */
+.featuredArticles {
+    padding-block: 2rem;
+}
+.sectionHeaderOffset {
+    margin-top: 7.4rem;
+}
+.featuredArticlesContainer,
+.featuredContent {
+    gap: var(--gap);
+}
+
+.headlineBanner {
+    background-color: var(--secondary-background-color);
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    font-size: var(--font-size-xsm);
+}
+
+.headline {
+    background-color: #000;
+    color: var(--light-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 4px;
+    height: 100%;
+}
+
+.headline span {
+    height: inherit;
+}
+
+.fancyBorder {
+    position: relative;
+    overflow: hidden;
+}
+.fancyBorder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    // 需使用複合屬性設定漸層背景
+    background: var(--gradient-color);
+    background-size: 50% 100%;
+    z-index: 5;
+}
+
+.fancyBorder span {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--secondary-background-color);
+}
+
+.article {
+    position: relative;
+    min-height: var(--item-min-height-md);
+}
+
+.articleImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s;
+}
+.articleCategory {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--primary-background-color);
+    color: var(--light-color);
+    text-transform: uppercase;
+    z-index: 10;
+}
+.articleDataContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem 1.5rem;
+    background-color: var(--transparent-dark-color);
+    z-index: 10;
+    width: 100%;
+    transition: background-color 0.5s;
+}
+// 游標滑過文章的時候 內容背景變成深色
+.article:hover .articleDataContainer {
+    background-color: var(--hover-dark-color);
+    color: var(--hover-light-color);
+}
+// 白色主題時 符號hover效果
+.article:hover .articleDataSpacer {
+    background-color: var(--hover-light-color);
+}
+
+.article:hover .articleTitle {
+    color: var(--hover-light-color);
+}
+
+.articleData {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    font-size: var(--font-size-xsm);
+    margin-bottom: 1rem;
+}
+
+.articleDataSpacer {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--light-color-alt);
+    transform: rotate(45deg);
+}
+
+.title {
+    color: var(--light-color);
+}
+.articleTitle {
+    font-size: var(--font-size-md);
+}
+
+/* 精選文章-側邊欄 Featured articles - Sidebar */
+.sidebar {
+    background-color: var(--secondary-background-color);
+    padding: 2.5rem;
+}
+
+.trendingNewsBox {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--transparent-light-color);
+}
+.trendingNewsBox:last-of-type {
+    border-bottom: none;
+}
+.trendingNewsImageBox {
+    position: relative;
+    width: 100%;
+    height: var(--item-min-height-sm);
+}
+
+.featuredContentTitle {
+    font-size: var(--font-size-md);
+    text-align: center;
+    padding: 1rem;
+}
+.trendingNewsImageBox {
+    position: relative;
+    width: 100%;
+    height: var(--item-min-height-sm);
+}
+.trendingNumber {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    z-index: 15;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--secondary-background-color);
+    color: var(--light-color);
+    border-radius: 50%;
+}
+
+.trendingNewsData .articleTitle {
+    font-size: var(--font-size-sm);
+    line-height: 2;
+}
+
+.trendingNewsBox:hover .articleTitle {
+    color: var(--light-color-alt);
+}
+
+/* 快速閱讀 Quick read */
+.sectionTitle {
+    position: relative;
+    font-size: var(--font-size-md);
+    margin-bottom: 6rem;
+}
+
+.sectionTitle::before {
+    content: attr(data-name);
+    font-size: var(--font-size-lg);
+    text-transform: uppercase;
+    opacity: 0.1;
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+}
+
+.article.swiper-slide {
+    height: 40rem;
+}
+
+/* 快速閱讀-Swiper Quick read - Swiper */
+.swiper-wrapper {
+    height: auto;
+}
+.swiper-controls {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--secondary-background-color);
+}
+
+.swiper-controls::after {
+    font-size: 1.6rem;
+    color: var(--light-color);
+}
+
+.swiper-pagination {
+    bottom: 0.5rem !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--light-color);
+}
+
+/* 較舊文章 Older posts */
+.olderPostsGridWrapper {
+    gap: var(--gap);
+}
+.olderPostsArticleImageWrapper,
+.olderPosts .article {
+    min-height: var(--item-min-height-sm);
+}
+.olderPosts .article {
+    background-color: var(--secondary-background-color);
+}
+.olderPostsArticleImageWrapper {
+    position: relative;
+}
+.olderPostsGridWrapper .articleDataContainer {
+    position: static;
+    background-color: transparent;
+}
+.olderPostsGridWrapper .articleTitle {
+    margin-bottom: var(--margin-sm);
+}
+.seeMoreContainer {
+    margin-top: var(--margin-md);
+}
+.seeMoreBtn {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+.seeMoreBtn:hover {
+    color: var(--light-color);
+}
+.seeMoreBtn i {
+    transition: transform 0.25s;
+}
+.seeMoreBtn:hover i {
+    transform: translateX(0.5rem);
+}
+
+/* 熱門標籤 Popular tags */
+.popularTagsContainer {
+    gap: var(--gap);
+}
+.popularTagsContainer .article {
+    min-height: var(--item-min-height-sm);
+}
+.tagName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    background-color: var(--transparent-dark-color);
+    padding: 1rem 2rem;
+}
+.popularTagsContainer .article:hover .tagName {
+    color: var(--light-color);
+}
+.popularTagsContainer .article {
+    overflow: hidden;
+}
+
+.popularTagsContainer .article:hover .articleImage {
+    transform: scale(1.05);
+}
+
+/* 電子報 Newsletter */
+.newsletter {
+    padding-bottom: 6rem;
+}
+.newsletterTitle {
+    font-size: var(--font-size-lg);
+}
+.newsletterDescription {
+    margin-bottom: 3rem;
+}
+
+/* 底部 Footer */
+.footer {
+    background-color: var(--secondary-background-color);
+}
+.footerContainer {
+    gap: var(--gap);
+}
+.companyData {
+    display: flex;
+    flex-direction: column;
+    order: 1; //0是第一位 1是第二位
+}
+.companyDescription {
+    margin-block: var(--margin-sm);
+    max-width: 75%;
+}
+.socialMedia {
+    margin-bottom: var(--margin-md);
+}
+
+.copyrightNotice {
+    opacity: 0.8;
+}
+.footerList {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footerTitle {
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+    margin-bottom: var(--margin-sm);
+}
+
+/* 滾動條樣式 Scrollbar styles */
+::-webkit-scrollbar {
+    width: 1.5rem;
+}
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #3f4254;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2e303b;
+}
+
+/* 部落格文章 Blog post */
+.blogPost {
+    padding-bottom: 5rem;
+    line-height: 1.5;
+}
+.blogPostData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: 2.5rem;
+}
+.blogPostTitle {
+    font-size: clamp(3rem, 5vw, 6rem);
+}
+.blogPostData .articleData {
+    margin-bottom: 2.5rem;
+}
+.blogPostData img {
+    width: 100%;
+    height: var(--item-min-height-sm);
+    object-fit: cover;
+    object-position: center 10%;
+}
+.blogPostContainer .container {
+    max-width: 90rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+.quote {
+    background-color: var(--secondary-background-color);
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+}
+.quote p {
+    font-style: italic;
+}
+.quote span i {
+    font-size: 3.5rem;
+}
+.author {
+    margin-top: 5rem;
+    gap: var(--gap);
+    background-color: var(--secondary-background-color);
+}
+.authorImageBox {
+    position: relative;
+    height: var(--item-min-height-sm);
+}
+.authorAbout {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.authorName {
+    color: var(--light-color);
+    font-weight: 400;
+}
+.authorAbout p {
+    max-width: 50rem;
+    margin-bottom: 1rem;
+}
+.authorAbout .socialMedia {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+/* 媒體查詢 Media queries */
+@media screen and (min-width: 700px) {
+    .trendingNewsBox {
+        flex-direction: row;
+        align-items: center;
+    }
+    .trendingNewsImageBox {
+        width: 50%;
+    }
+    .trendingNewsData {
+        margin: auto;
+        text-align: center;
+    }
+    .newsletterDescription {
+        max-width: 40rem;
+    }
+    .popularTagsContainer,
+    .footerContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formContainerInner {
+        align-items: center;
+    }
+    .companyData {
+        order: 0;
+    }
+    .author {
+        grid-template-columns: 25rem 1fr;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* 網格 直的算有5列 橫的算有4欄 
+        .1＿2＿3＿4＿5
+        2|＿|＿|＿|＿|
+        3|＿|＿|＿|＿|
+        4|＿|＿|＿|＿|
+        5|＿|＿|＿|＿|
+        6|＿|＿|＿|＿|
+    */
+    .featuredContent {
+        //grid-template-rows: 5rem repeat(4, 1fr); 這段 CSS 規則指定了一個網格容器，其中第一行的高度是 5rem，其餘的四行都會平均分配剩餘的可用空間。這樣的配置確保了網格在垂直方向上的結構和均勻分布。
+        grid-template-rows: 6rem repeat(4, 1fr);
+        //網格容器被分為四列，每一列的寬度都是相等的，並且均佔據可用空間的一等份。
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .headlineBanner {
+        grid-column: 1/-1;
+        font-size: var(--font-size-sm);
+    }
+    /* //! 網格 
+        直的算有5列 橫的算有4欄 
+        .featuredContent {
+            grid-template-rows: 6rem repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .1＿2＿3＿4＿5
+        2|▮|▮|▮|▮| ▮.headlineBanner
+        3|▩|▩|▯|▯| ▯.featuredArticle
+        4|▩|▩|▯|▯| ▩.featuredArticle1
+        5|◉|◉|◉|◉| ◉.featuredArticle3
+        6|◉|◉|◉|◉|
+    */
+    .featuredArticle {
+        grid-column: 3/-1; //橫的算第三條線到最後一條線的範圍
+        grid-row: 2/4; //直的算第二條線到第四條線的範圍
+    }
+
+    .featuredArticle1 {
+        grid-column: 1/3;
+    }
+
+    .featuredArticle3 {
+        grid-column: 1/-1;
+        grid-row: 4/6;
+    }
+
+    .olderPosts .article {
+        grid-template-columns: 25rem 1fr;
+    }
+    .olderPostsArticleImageWrapper {
+        height: auto;
+    }
+    .blogPostData img {
+        height: var(--item-min-height-md);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .menu {
+        position: static;
+        width: initial;
+        padding: initial;
+        background-color: transparent;
+        opacity: 1;
+        transform: scale(1);
+    }
+    .menu > .list {
+        flex-direction: row;
+    }
+    .screenLgHidden {
+        display: none;
+    }
+    .screenSmHidden {
+        display: block;
+    }
+    .signUpBtn {
+        padding: 4px;
+    }
+    /* Fancy button animation effect */
+    .btn.fancyBorder:hover::before {
+        animation: animate_border 0.75s linear infinite;
+    }
+
+    @keyframes animate_border {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .featuredArticlesContainer {
+        // .featuredArticlesContainer 的容器指定了網格布局的列配置。
+        // 具體來說，這個容器擁有兩列，寬度分別是 1fr 和 40rem。
+        grid-template-columns: 1fr 40rem;
+    }
+    .trendingNewsImageBox {
+        width: 10rem;
+        height: 10rem;
+    }
+    .popularTagsContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .footerContainer {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .companyData {
+        grid-column: span 2;
+    }
+    .companyDescription {
+        max-width: 85%;
+    }
+    .copyrightNotice {
+        margin-top: auto;
+    }
+    .blogPostData img {
+        height: 40rem;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .olderPostsGridWrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 1500px) {
+    .featuredArticle {
+        grid-column: 3/-1;
+    }
+    .featuredArticle1 {
+        grid-column: 1/3;
+        grid-row: 2/-1;
+    }
+}

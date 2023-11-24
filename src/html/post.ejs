@@ -1,0 +1,282 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NewsFlash | Post</title>
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="../assets/images/favicon.png"
+        />
+        <!-- Remix icons -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="header" id="header">
+            <nav class="navbar container">
+                <a href="./index.html">
+                    <h2 class="logo">NewsFlash</h2>
+                </a>
+                <div class="menu" id="menu">
+                    <ul class="list">
+                        <li class="listItem">
+                            <a href="#" class="listLink current">首頁</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">分類</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">專欄</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">新聞</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">會員</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">聯絡</a>
+                        </li>
+                        <!-- 大螢幕時隱藏 -->
+                        <li class="listItem screenLgHidden">
+                            <a href="#" class="listLink">登入</a>
+                        </li>
+                        <li class="listItem screenLgHidden">
+                            <a href="#" class="listLink">註冊</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 切換明暗主題 -->
+                <div class="list listRight">
+                    <button class="btn placeItemCenter" id="themeToggleBtn">
+                        <i class="ri-sun-line sun-icon"></i>
+                        <i class="ri-moon-line moon-icon"></i>
+                    </button>
+                    <button class="btn placeItemCenter" id="searchIcon">
+                        <i class="ri-search-line"></i>
+                    </button>
+                    <button
+                        class="btn placeItemCenter screenLgHidden menuToggleIcon"
+                        id="menuToggleIcon"
+                    >
+                        <i class="ri-menu-3-line open-menu-icon"></i>
+                        <i class="ri-close-line close-menu-icon"></i>
+                    </button>
+
+                    <a href="#" class="listLink screenSmHidden">登入</a>
+                    <a
+                        href="#"
+                        class="listLink screenSmHidden btn signUpBtn fancyBorder"
+                        ><span>註冊</span></a
+                    >
+                </div>
+            </nav>
+        </header>
+        <!-- Search -->
+        <div class="searchFormContainer container" id="searchFormContainer">
+            <div class="formContainerInner">
+                <form action="" class="form">
+                    <input
+                        type="text"
+                        class="formInput"
+                        placeholder="搜尋關鍵字..."
+                    />
+                    <button class="btn formBtn" type="submit">
+                        <i class="ri-search-line"></i>
+                    </button>
+                </form>
+                <span class="formNote">按下 ESC鍵 關閉</span>
+            </div>
+            <button class="btn formCloseBtn placeItemsCenter" id="formCloseBtn">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <!-- Blog post -->
+        <section class="blogPost sectionHeaderOffset">
+            <div class="blogPostContainer container">
+                <div class="blogPostData">
+                    <h3 class="title blogPostTitle">VR是未來嗎?</h3>
+                    <div class="articleData">
+                        <span>Dec 6th 2021</span>
+                        <span class="articleDataSpacer"></span>
+                        <span>4 min read</span>
+                    </div>
+                    <img id="post1" alt="" />
+                </div>
+            <div class="container">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Distinctio iure cumque vero laboriosam atque. Magnam et modi
+                    atque culpa pariatur?
+                </p>
+
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Distinctio iure cumque vero laboriosam atque. Magnam et modi
+                    atque culpa pariatur?
+                </p>
+
+                <blockquote class="quote">
+                    <p>
+                        <span><i class="ri-double-quotes-l"></i></span>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Distinctio iure cumque vero laboriosam atque.
+                        Magnam et modi atque culpa pariatur?
+                        <span><i class="ri-double-quotes-r"></i></span>
+                    </p>
+                </blockquote>
+
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Distinctio iure cumque vero laboriosam atque. Magnam et modi
+                    atque culpa pariatur?
+                </p>
+
+                <div class="author dGrid">
+                    <div class="authorImageBox">
+                        <img alt="" class="articleImage" id="author1" />
+                    </div>
+
+                    <div class="authorAbout">
+                        <h3 class="authorName">John Doe</h3>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Dolores, iure!
+                        </p>
+                        <ul class="list socialMedia">
+                            <li class="listItem">
+                                <a href="#" class="listLink">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                            </li>
+                            <li class="listItem">
+                                <a href="#" class="listLink">
+                                    <i class="ri-facebook-circle-line"></i>
+                                </a>
+                            </li>
+                            <li class="listItem">
+                                <a href="#" class="listLink">
+                                    <i class="ri-twitter-line"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- 頁尾 Footer -->
+        <footer class="footer section">
+            <div class="footerContainer container dGrid">
+                <div class="companyData">
+                    <a href="./index.ejs">
+                        <h2 class="logo">NewsFlash</h2>
+                    </a>
+                    <p class="companyDescription">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Iste, deleniti.
+                    </p>
+
+                    <ul class="list socialMedia">
+                        <li class="listItem">
+                            <a href="#" class="listLink">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">
+                                <i class="ri-facebook-circle-line"></i>
+                            </a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">
+                                <i class="ri-twitter-line"></i>
+                            </a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">
+                                <i class="ri-pinterest-line"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <span class="copyrightNotice">
+                        &copy; 2022 Newsflash. 版權所有
+                    </span>
+                </div>
+
+                <div>
+                    <h6 class="title footerTitle">分類</h6>
+                    <ul class="list footerList">
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h6 class="title footerTitle">連結</h6>
+                    <ul class="list footerList">
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h6 class="title footerTitle">公司</h6>
+                    <ul class="list footerList">
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                        <li class="listItem">
+                            <a href="#" class="listLink">基本項目</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
